@@ -23,12 +23,12 @@ export const InputPassword = ({iconSize,...rest}:InputPasswordProps)=>{
     }
 
     return (
-        <Input.Field>
+        <>
             <Input.Icon icon={isPassword ? PasswordIcon : PasswordOffIcon} size={iconSize || iconThemeSize}/>
             <InputPasswordSty  {...rest} type={isPassword ? 'password' : 'text'} />
             <button onClick={handleClick}>
                 {isPassword ? <EyeIcon size={iconSize || iconThemeSize}/> : <EyeOffIcon  size={iconSize || iconThemeSize}/>}
             </button>
-        </Input.Field>
+        </>
     )
 }

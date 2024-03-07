@@ -1,3 +1,4 @@
+import { InputLabel } from "./Input.Label";
 import { InputButton } from "./InputButton";
 import { InputField } from "./InputField";
 import { InputIcon } from "./InputIcon";
@@ -11,5 +12,6 @@ export const Input = {
     Icon: InputIcon,
     Input: InputInput,
     Field: InputField,
-    Password: InputPassword
+    Password: InputPassword,
+    Label: InputLabel
 }
