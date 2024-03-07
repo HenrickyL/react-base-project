@@ -25,3 +25,6 @@ dist-ssr
 
 /.vs
 package-lock.json
+
+
+.env
