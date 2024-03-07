@@ -1,6 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 import { User } from "../_interfaces/user";
 import { client} from '../_network/api'
+import { StorageKeys, StorageMiddleware } from "../_middlewares/StorageMiddleware";
 
 interface AuthCredentials {
     email: string;
@@ -18,7 +19,38 @@ const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 /* ---------------------- */
 
 export const AuthProvider = ( {children}:{ children: React.ReactNode})=>{
-    const [user, setUser] = useState<User | null>()
+    const [user, setUser] = useState<User | null>(StorageMiddleware.getContent<User>(StorageKeys.USER))
+    function signOut() {
+        StorageMiddleware.removeContent(StorageKeys.USER)
+        setUser(null);
+    }
+    async function signIn({ email, password }: AuthCredentials) {
+        const { data } = await client.get<User[]>(`users?email=${email}`);
+
+        if (data.length == 0 || data[0].password !== password) {
+            throw new Error('Invalid credentials!');
+        }
+        const currentUser =data[0]
+        StorageMiddleware.setContent<User>(StorageKeys.USER, currentUser)
+        setUser(currentUser);
+    }
+
+    // memoize
+    const providerData = useMemo(
+        () => ({
+            user,
+            signIn,
+            signOut
+        }),
+        [user]
+    );
+
+    return (
+        <AuthContext.Provider value={providerData}>
+            {children}
+        </AuthContext.Provider>
+    );
+
 }
 
 export const userAuth = () :AuthContextData =>{
