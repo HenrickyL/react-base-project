@@ -1,10 +1,18 @@
 import { createBrowserRouter } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
+import { useAuth } from "../_hooks/auth";
+
+const Home = ()=>{
+    const { user } = useAuth();
+    return (!user ? <h1>Home</h1> :
+        <h1>Welcome, {user.name}</h1>
+    )
+}
 
 export const routes = createBrowserRouter([
     {
         path: '/',
-        element: <h1>Home</h1>
+        element: <Home />
     },
     {
         path: 'test',
