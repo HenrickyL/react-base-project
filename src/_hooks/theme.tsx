@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import GlobalStyle from "../globalCss"
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 import { Theme, ThemeController } from "../_middlewares/Themes";
 
 
@@ -8,7 +8,7 @@ interface ThemeContextData {
     theme: Theme;
 }
 
-export const ThemesProvider = ({children}:{children:React.ReactNode})=>{
+export const ThemeProvider = ({children}:{children:React.ReactNode})=>{
     const [theme, setTheme] = useState<Theme>(ThemeController.getTheme())
 
     //TODO: Resolve use setDispatchTheme
@@ -23,9 +23,9 @@ export const ThemesProvider = ({children}:{children:React.ReactNode})=>{
         [theme]
     );
     return (
-        <ThemeProvider theme={providerData.theme}>
+        <StyledThemeProvider theme={providerData.theme}>
             <GlobalStyle />
             {children}
-        </ThemeProvider>
+        </StyledThemeProvider>
     )
 }

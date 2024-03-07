@@ -1,13 +1,13 @@
 import {AuthProvider} from './auth';
-import {ThemesProvider} from './theme';
+import {ThemeProvider} from './theme';
 
 
 export const Providers = ({ children }: { children: React.ReactNode })=>{
     return (
         <AuthProvider>
-            <ThemesProvider>
+            <ThemeProvider>
                 {children}
-            </ThemesProvider>
+            </ThemeProvider>
         </AuthProvider>
     )
 }
