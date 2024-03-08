@@ -5,7 +5,7 @@ import { ThemeProvider as StyledThemeProvider } from 'styled-components'
 interface ThemeContextData {
     theme: Theme,
     toggle():void,
-    changeTheme(theme: 'dark'|'light'): void
+    changeToTheme(theme: 'dark'|'light'): void
 }
 
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
@@ -15,10 +15,10 @@ export const ThemeProvider = ({children}:{children:React.ReactNode})=>{
     const [theme, setTheme] = useState<Theme>(lightTheme)
 
     function toggle():void{
-        changeTheme(theme === lightTheme? 'dark' : 'light' )
+        changeToTheme(theme === lightTheme? 'dark' : 'light' )
     }
 
-    function changeTheme(theme: 'dark'|'light'): void{
+    function changeToTheme(theme: 'dark'|'light'): void{
         setTheme(theme === 'dark'? darkTheme : lightTheme)
     }
     
@@ -26,7 +26,7 @@ export const ThemeProvider = ({children}:{children:React.ReactNode})=>{
         () => ({
             theme,
             toggle,
-            changeTheme
+            changeToTheme
         }),
         [theme]
     );
