@@ -6,7 +6,7 @@ import {
     IoMdUnlock as PasswordOffIcon,
     IoMdLock as PasswordIcon} from "react-icons/io";
 import { useState } from "react";
-import { ThemeController } from "../../../_middlewares/Themes";
+import { useTheme } from "../../../_hooks/theme";
 
 
 interface InputPasswordProps extends React.InputHTMLAttributes<HTMLInputElement>{
@@ -15,7 +15,8 @@ interface InputPasswordProps extends React.InputHTMLAttributes<HTMLInputElement>
 
 export const InputPassword = ({iconSize,...rest}:InputPasswordProps)=>{
     const [isPassword, setIsPassword] = useState<boolean>(true)
-    const iconThemeSize = ThemeController.getTheme().settings.iconSize
+    const {theme} = useTheme()
+    const iconThemeSize = theme.settings.iconSize
 
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>)=>{
         event.preventDefault();
