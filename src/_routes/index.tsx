@@ -1,24 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
-import { useAuth } from "../_hooks/auth";
-import { Input } from "../_components/Input";
-import { useTheme } from "../_hooks/theme";
-
-const Home = ()=>{
-    const { user } = useAuth();
-    return (!user ? 
-        <div>
-            <Input.Root>
-                <Input.Field>
-                    <Input.Label htmlFor="password" text="Password"/>
-                    <Input.Password/>
-                </Input.Field>
-            </Input.Root>
-        </div>
-        :
-        <h1>Welcome, {user.name}</h1>
-    )
-}
+import { Login } from "../_pages/Login";
+import { Home } from "../_pages/Home";
 
 export const routes = createBrowserRouter([
     {
@@ -32,9 +15,9 @@ export const routes = createBrowserRouter([
     },
 
     {
-        path: 'signin',
+        path: 'auth/login',
         element:
-           <h1>signin</h1>
+           <Login />
     },
 
 ])
