@@ -68,6 +68,9 @@ export const Login = ()=>{
                         onClick={form.submitForm}
                         text="Login" 
                         type="submit"/>
+                    <Form.Field>
+                        <Form.Link text="Signin" to="/signin"/>
+                    </Form.Field>
                 </Form.Root>
             </main>
         </LoginSty>
