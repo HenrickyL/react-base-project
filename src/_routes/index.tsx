@@ -6,7 +6,11 @@ import { Home } from "../_pages/Home";
 export const routes = createBrowserRouter([
     {
         path: '/',
-        element: <Home />
+        element: <Home />,
+        children: [
+            {path: '/', element: <h1>home</h1>},
+            {path: '/*', element: <h1>aaa</h1>}
+        ]
     },
     {
         path: 'test',
