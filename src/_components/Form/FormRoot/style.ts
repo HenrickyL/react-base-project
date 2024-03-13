@@ -1,6 +1,7 @@
+import { FormikProvider } from "formik";
 import styled from "styled-components";
 
-export const FormRootSty = styled.form`
+export const FormRootSty = styled(FormikProvider)`
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -1,13 +1,15 @@
 import { ReactNode } from "react"
 import { FormRootSty } from "./style"
+import { FormikContextType } from "formik";
 
-interface FormRootProps extends React.FormHTMLAttributes<HTMLFormElement>{
+interface FormRootProps{
     children: ReactNode
+    form: FormikContextType<any>
 }
 
-export const FormRoot = ({children, ...props}: FormRootProps)=>{
+export const FormRoot = ({children, form, ...props}: FormRootProps)=>{
     return(
-        <FormRootSty {...props}>
+        <FormRootSty value={form} {...props}>
             {children}
         </FormRootSty>
     )
