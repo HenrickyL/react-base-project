@@ -10,7 +10,9 @@ export const Home = ()=>{
             <h1>Home</h1>
 
             <Notification.Root>
-                    aaa
+                <Notification.Icon  />
+                <Notification.Content text="text notification" />
+                <Notification.Icon  />
             </Notification.Root>
             <Outlet />
         </div>

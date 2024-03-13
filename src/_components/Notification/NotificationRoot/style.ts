@@ -14,6 +14,8 @@ const notificationColors = {
 export const NotificationRootSty = styled.div<NotificationFieldStyProps>`
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 8px;
     width: 100%;
     height: 100%;
     transition: 0.4s;
@@ -23,5 +25,5 @@ export const NotificationRootSty = styled.div<NotificationFieldStyProps>`
     background-color: ${(props) => 
         notificationColors[props.type](props).background ||
         props.theme.background
-     };
+    };
 `
