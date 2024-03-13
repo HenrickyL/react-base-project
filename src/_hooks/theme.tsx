@@ -54,13 +54,18 @@ interface ThemeSettings{
     normalTransition: number,
     slowTransition?: number,
     iconSize: number,
-  
   }
+
+interface ThemeNotificationFields{
+  default: string,
+  background?: string
+}
+  
   interface ThemeNotification{
-    success: string,
-    warning: string,
-    error: string,
-    report: string,
+    success: ThemeNotificationFields,
+    warning: ThemeNotificationFields,
+    error: ThemeNotificationFields,
+    report: ThemeNotificationFields,
   }
   
   interface ThemeInputsSettings{
@@ -125,10 +130,22 @@ interface ThemeSettings{
       iconSize: 20
     },
     notification:{
-      success: '#2ecc71',
-      warning: '#f39c12',
-      error: '#e74c3c',
-      report: '#3498db',
+      success: {
+        default: '#2ecc71',
+        background: '#F0FFF0' 
+      },
+      warning: {
+          default: '#f39c12',
+          background: '#fffff0' 
+      },
+      error: {
+          default: '#e74c3c',
+          background: '#fff0f0' 
+      },
+      report: {
+          default: '#3498db',
+          background: '#f0f0ff'
+      }
     }
   };
   
@@ -160,10 +177,18 @@ interface ThemeSettings{
       background: '#4a5a4a'
     },
     notification:{
-      success: '#2ecc71',
-      warning: '#f39c12',
-      error: '#e74c3c',
-      report: '#3498db',
+      success: {
+        default: '#2ecc71',
+      },
+      warning: {
+          default: '#f39c12',
+      },
+      error: {
+          default: '#e74c3c',
+      },
+      report: {
+          default: '#3498db',
+      }
     }
   };
   
