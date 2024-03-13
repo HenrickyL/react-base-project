@@ -3,9 +3,10 @@ import { InputFieldSty } from "./style"
 
 interface InputFieldProps{
     children: ReactNode
+    error?: boolean | string | undefined
 }
 
-export const InputField = ({children}: InputFieldProps)=>{
+export const InputField = ({children, error}: InputFieldProps)=>{
     const inputFieldRef = useRef<HTMLDivElement>(null);
     const handleClick = () => {
         let inputElement = inputFieldRef.current?.querySelector(
@@ -17,7 +18,7 @@ export const InputField = ({children}: InputFieldProps)=>{
         }
     };
     return (
-        <InputFieldSty ref={inputFieldRef} onClick={handleClick}>
+        <InputFieldSty $error={error} ref={inputFieldRef} onClick={handleClick}>
             {children}
         </InputFieldSty>
     )

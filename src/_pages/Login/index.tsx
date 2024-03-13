@@ -48,7 +48,7 @@ export const Login = ()=>{
                 <Form.Root form={form}>
                     <Form.Title text="Login"/>
                     <Input.Root>
-                        <Input.Field>
+                        <Input.Field error={form.errors.email}> 
                             <Input.Icon icon={MailIcon}/>
                             <Input.Input
                                 name="email" 
@@ -58,7 +58,7 @@ export const Login = ()=>{
                     </Input.Root>
 
                     <Input.Root>
-                        <Input.Field>
+                        <Input.Field error={form.errors.password}>
                             <Input.Password 
                                 name="password"
                                 placeholder="Password"/>
