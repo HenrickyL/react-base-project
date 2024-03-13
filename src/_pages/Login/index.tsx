@@ -33,11 +33,10 @@ export const Login = ()=>{
         validationSchema,
         onSubmit: async (value, {setFieldError}) => {
            try {
-            // await signIn(value)
+            await signIn(value)
             console.log(value)
-            // navigate('/');
+            navigate('/');
            } catch (ex) {
-                console.error('Erro ao fazer login:', ex);
                 setFieldError('password', 'Usuário inválido');
            }
         }

@@ -15,9 +15,15 @@ export const routes = createBrowserRouter([
     },
 
     {
-        path: 'auth/login',
+        path: 'login',
         element:
            <Login />
+    },
+
+    {
+        path: '*',
+        element:
+           <h1>Not Found</h1>
     },
 
 ])
