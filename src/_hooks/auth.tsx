@@ -2,15 +2,14 @@ import { createContext, useContext, useMemo, useState } from "react";
 import { User } from "../_interfaces/user";
 import { client} from '../_network/api'
 import { StorageKeys, StorageMiddleware } from "../_middlewares/StorageMiddleware";
+import { AuthLoginCredentials, AuthSignInCredentials } from "../_network/api/users";
 
-interface AuthCredentials {
-    email: string;
-    password: string;
-}
+
 
 interface AuthContextData {
     user: User | null;
-    signIn(credentials: AuthCredentials): Promise<void>;
+    logIn(credentials: AuthLoginCredentials): Promise<void>;
+    signIn(credentials: AuthSignInCredentials): Promise<void>;
     signOut(): Promise<void> | void;
 }
 
@@ -24,7 +23,7 @@ export const AuthProvider = ( {children}:{ children: React.ReactNode})=>{
         StorageMiddleware.removeContent(StorageKeys.USER)
         setUser(null);
     }
-    async function signIn({ email, password }: AuthCredentials) {
+    async function logIn({ email, password }: AuthLoginCredentials) {
         const { data } = await client.get<User[]>(`users?email=${email}`);
 
         if (data.length == 0 || data[0].password !== password) {
@@ -34,11 +33,15 @@ export const AuthProvider = ( {children}:{ children: React.ReactNode})=>{
         StorageMiddleware.setContent<User>(StorageKeys.USER, currentUser)
         setUser(currentUser);
     }
+    async function signIn(data: AuthSignInCredentials){
+
+    }
 
     // memoize
     const providerData = useMemo(
         () => ({
             user,
+            logIn,
             signIn,
             signOut
         }),

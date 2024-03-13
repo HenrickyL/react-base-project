@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { PrivateRoute } from "./PrivateRoute";
 import { Login } from "../_pages/Login";
 import { Home } from "../_pages/Home";
+import { Signin } from "../_pages/Signin";
 
 export const routes = createBrowserRouter([
     {
@@ -22,6 +23,11 @@ export const routes = createBrowserRouter([
         path: 'login',
         element:
            <Login />
+    },
+    {
+        path: 'signin',
+        element:
+           <Signin />
     },
 
     {
