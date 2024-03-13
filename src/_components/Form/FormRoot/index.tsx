@@ -1,6 +1,7 @@
 import { ReactNode } from "react"
 import { FormRootSty } from "./style"
-import { FormikContextType } from "formik";
+import { FormikContextType, 
+    FormikProvider } from "formik";
 
 interface FormRootProps{
     children: ReactNode
@@ -9,8 +10,10 @@ interface FormRootProps{
 
 export const FormRoot = ({children, form, ...props}: FormRootProps)=>{
     return(
-        <FormRootSty value={form} {...props}>
-            {children}
+        <FormRootSty  {...props}>
+            <FormikProvider value={form}>
+                {children}
+            </FormikProvider>
         </FormRootSty>
     )
     

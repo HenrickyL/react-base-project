@@ -2,12 +2,16 @@ import { ReactNode } from "react"
 import { FormTitleSty } from "./style"
 
 interface FromTitleProps {
-    children: ReactNode
+    children?: ReactNode
+    text?: string
 }
-export const FormTitle = (props: FromTitleProps)=>{
+export const FormTitle = ({children, text}: FromTitleProps)=>{
     return (
         <FormTitleSty>
-            {props.children}
+            {children ? 
+                children:
+                <h2>{text || ""}</h2>
+            }
         </FormTitleSty>
     )
 }

@@ -3,36 +3,74 @@ import { Form } from "../../_components/Form"
 import { Input } from "../../_components/Input"
 import { LoginSty } from "./style"
 import { IoMdMail as MailIcon } from "react-icons/io";
+import { useNavigate } from "react-router-dom";
+import * as Yup from 'yup';
+import { useAuth } from "../../_hooks/auth";
+
+interface LoginFormEntry{
+    email: string;
+    password: string;
+}
+
+const requiredField = 'Campo obrigatório';
+
+const validationSchema = Yup.object().shape({
+    email: Yup.string().required(requiredField).email('E-mail inválido'),
+    password: Yup.string().required(requiredField).min(4).max(16),
+});
 
 export const Login = ()=>{
+    const navigate = useNavigate();
+    const {signIn} = useAuth()
 
-    const form = useFormik<{name: string}>({
+    
+
+    const form = useFormik<LoginFormEntry>({
         initialValues: {
-            name: '',
+            email: '',
+            password: ''
         },
-        // validationSchema,
-        onSubmit: async () => {
-           
+        validationSchema,
+        onSubmit: async (value, {setFieldError}) => {
+           try {
+            // await signIn(value)
+            console.log(value)
+            // navigate('/');
+           } catch (ex) {
+                console.error('Erro ao fazer login:', ex);
+                setFieldError('password', 'Usuário inválido');
+           }
         }
     });
 
     return(
         <LoginSty>
-            <h1>Login</h1>
-            <Form.Root form={form}>
-                <Input.Root>
-                    <Input.Field>
-                        <Input.Icon icon={MailIcon}/>
-                        <Input.Input placeholder="Email"/>
-                    </Input.Field>
-                </Input.Root>
+            <main>
+                <Form.Root form={form}>
+                    <Form.Title text="Login"/>
+                    <Input.Root>
+                        <Input.Field>
+                            <Input.Icon icon={MailIcon}/>
+                            <Input.Input
+                                name="email" 
+                                type="email" 
+                                placeholder="Email"/>
+                        </Input.Field>
+                    </Input.Root>
 
-                <Input.Root>
-                    <Input.Field>
-                        <Input.Password placeholder="Password"/>
-                    </Input.Field>
-                </Input.Root>
-            </Form.Root>
+                    <Input.Root>
+                        <Input.Field>
+                            <Input.Password 
+                                name="password"
+                                placeholder="Password"/>
+                        </Input.Field>
+                    </Input.Root>
+                    <Input.Button 
+                        onClick={form.submitForm}
+                        text="Login" 
+                        type="submit"/>
+                </Form.Root>
+            </main>
         </LoginSty>
     )
 }

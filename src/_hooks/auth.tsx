@@ -10,8 +10,8 @@ interface AuthCredentials {
 
 interface AuthContextData {
     user: User | null;
-    signIn(credentials: AuthCredentials): void;
-    signOut(): void;
+    signIn(credentials: AuthCredentials): Promise<void>;
+    signOut(): Promise<void> | void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
