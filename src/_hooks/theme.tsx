@@ -104,7 +104,7 @@ interface ThemeNotificationFields{
   
   export const lightTheme: Theme = {
     contrast: '#000',
-    contrastLight: '#222',
+    contrastLight: '#555',
     text: '#000',
     background: '#fff',
     backgroundSnd: '#dff0df',
@@ -192,3 +192,9 @@ interface ThemeNotificationFields{
     }
   };
   
+export const notificationColors = {
+  success: (props: any) => props.theme.notification.success,
+  warning: (props: any) => props.theme.notification.warning,
+  error: (props: any) => props.theme.notification.error,
+  report: (props: any) => props.theme.notification.report
+};
