@@ -1,5 +1,5 @@
 import { Input } from ".."
-import { InputPasswordSty } from "./style"
+import { InputPasswordInputSty, InputPasswordSty } from "./style"
 import { 
     IoMdEye as EyeIcon,
     IoMdEyeOff as EyeOffIcon,
@@ -11,9 +11,10 @@ import { useTheme } from "../../../_hooks/theme";
 
 interface InputPasswordProps extends React.InputHTMLAttributes<HTMLInputElement>{
     iconSize?: number
+    name?: string
 }
 
-export const InputPassword = ({iconSize,...rest}:InputPasswordProps)=>{
+export const InputPassword = ({iconSize, name, ...rest}:InputPasswordProps)=>{
     const [isPassword, setIsPassword] = useState<boolean>(true)
     const {theme} = useTheme()
     const iconThemeSize = theme.settings.iconSize
@@ -24,12 +25,14 @@ export const InputPassword = ({iconSize,...rest}:InputPasswordProps)=>{
     }
 
     return (
-        <>
+        <InputPasswordSty>  
+            <div>
             <Input.Icon icon={isPassword ? PasswordIcon : PasswordOffIcon} size={iconSize || iconThemeSize}/>
-            <InputPasswordSty  {...rest} type={isPassword ? 'password' : 'text'} />
+            <InputPasswordInputSty name={name || 'password'} {...rest} type={isPassword ? 'password' : 'text'} />
+            </div>
             <button onClick={handleClick}>
                 {isPassword ? <EyeIcon size={iconSize || iconThemeSize}/> : <EyeOffIcon  size={iconSize || iconThemeSize}/>}
             </button>
-        </>
+        </InputPasswordSty>
     )
 }

@@ -5,6 +5,9 @@ interface InputSty{
 }
 
 export const InputSty = styled.div<InputSty>`
+    display: flex;
+    flex-direction: row;
+    width: 100%;
     input{
         width: 100%;
         height: 100%;

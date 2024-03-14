@@ -8,4 +8,6 @@ export const FormRootSty = styled.div`
     padding: 1rem;
     border-radius: 8px;
     gap: 1.5rem;
+    width: 100%;
+    height: 100%;
 `
