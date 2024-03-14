@@ -21,10 +21,11 @@ export const NotificationRootSty = styled.div<NotificationFieldStyProps>`
         notificationColors[props.type](props).background ||
         props.theme.background
     };
-    filter: brightness(0.9);
+    filter: brightness(0.95);
 
 
     &:hover{
         filter: brightness(1);
+        transform: translateX(4px);
     }
 `
