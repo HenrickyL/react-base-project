@@ -10,7 +10,7 @@ export const NotificationActionSty = styled.button<NotificationActionStyProps>`
     border-radius: 8px;
     border: 2px solid  transparent;
     background-color: ${prop=> prop.type ==='primary' ?
-        prop.theme.primary : prop.theme.gray };
+        prop.theme.primary : 'transparent' };
     padding: 4px;
     filter: brightness(0.8);
     transition: 0.4s;

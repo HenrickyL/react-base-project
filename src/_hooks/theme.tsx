@@ -69,7 +69,7 @@ interface ThemeNotificationFields{
   }
   
   interface ThemeInputsSettings{
-    background: string
+    background: string,
   }
   
   export interface Theme {
@@ -104,7 +104,7 @@ interface ThemeNotificationFields{
   
   export const lightTheme: Theme = {
     contrast: '#000',
-    contrastLight: '#555',
+    contrastLight: '#888',
     text: '#000',
     background: '#fff',
     backgroundSnd: '#dff0df',
@@ -123,7 +123,7 @@ interface ThemeNotificationFields{
     tertiary: '#FB8C50ff',
   
     input: {
-      background: "#fff",
+      background: "#f0f0f0",
     },
     settings:{
       normalTransition: 400,
