@@ -3,7 +3,7 @@ import { Icon } from "../../Icon"
 import { NotificationActionSty } from "./style"
 
 interface NotificationAction{
-    onClick: ()=>void
+    onClick: (rest:any)=>void
     icon: IconType
     type?: 'primary' | 'secondary'
 }
@@ -11,7 +11,7 @@ interface NotificationAction{
 export const NotificationAction = (props: NotificationAction)=>{
     return(
         <NotificationActionSty type={ props.type || 'primary'} onClick={props.onClick}>
-            <Icon icon={props.icon}/>
+            <Icon icon={props.icon} />
         </NotificationActionSty>
     )
 }

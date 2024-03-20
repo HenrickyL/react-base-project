@@ -1,10 +1,9 @@
 import styled from "styled-components";
 import { notificationColors } from "../../../_hooks/theme";
+import { NotificationTypes } from "../../../_interfaces/notification";
 interface NotificationFieldStyProps{
-    type: NotificationType
+    type: NotificationTypes
 }
-type NotificationType = 'success' | 'warning'| 'error'| 'report'
-
 
 export const NotificationRootSty = styled.div<NotificationFieldStyProps>`
     display: flex;
@@ -12,7 +11,6 @@ export const NotificationRootSty = styled.div<NotificationFieldStyProps>`
     align-items: center;
     gap: 8px;
     width: 100%;
-    height: 100%;
     transition: 0.4s;
     border-radius: 8px;
     border: 2px solid ${(props) => notificationColors[props.type](props).default };
@@ -21,7 +19,7 @@ export const NotificationRootSty = styled.div<NotificationFieldStyProps>`
         notificationColors[props.type](props).background ||
         props.theme.background
     };
-    filter: brightness(0.95);
+    filter: brightness(0.97);
 
 
     &:hover{

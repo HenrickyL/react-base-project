@@ -16,7 +16,7 @@ export const NotificationActionSty = styled.button<NotificationActionStyProps>`
     transition: 0.4s;
 
     svg{
-        font-size: 12px;
+        font-size: ${prop=>`${prop.theme.settings.iconSize}px`};
     }
     
     &:hover{
