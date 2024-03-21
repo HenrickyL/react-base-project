@@ -12,6 +12,7 @@ const STY = styled.div`
   display: flex;
   top: 0;
   right:0;
+  z-index: 5;
 
   button{
     width: 2rem;

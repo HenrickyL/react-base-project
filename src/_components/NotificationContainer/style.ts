@@ -13,4 +13,5 @@ export const NotificationContainerSty = styled.div`
     height: 100vh;
     gap: 4px;
     padding: 8px;
+    z-index: 1;
 `
