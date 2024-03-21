@@ -10,7 +10,7 @@ import {
 export const NotificationContainer = ()=>{
     const { queue, removeNotification } = useNotificationStore();
     function handleCheck(notification: INotification):void{
-        if(notification.actions.check){
+        if(notification.actions?.check){
             notification.actions.check()
         }
         handleClose(notification)
@@ -22,15 +22,20 @@ export const NotificationContainer = ()=>{
         <NotificationContainerSty>
             {
                 queue.map(notification=>
-                    <Notification.Root key={notification.id} type={notification.type}>
-                        <Notification.Icon icon={notification.icon}/>
+                    <Notification.Root key={notification.id} type={notification.type || 'report'}>
+                        {notification.icon ? 
+                            <Notification.Icon icon={notification.icon}/>
+                        : <></>}
                         <Notification.Content text={notification.message} />
-                        <Notification.Actions>
-                            {notification.actions.check &&
-                                <Notification.Action icon={CheckIcon} type="primary" onClick={()=>handleCheck(notification)}/>}
-                            {notification.actions.close &&
-                                <Notification.Action icon={CloseIcon} type="secondary" onClick={()=>handleClose(notification)}/>}
-                        </Notification.Actions>
+                        {notification.actions ?
+                            <Notification.Actions>
+                                {notification.actions.check &&
+                                    <Notification.Action icon={CheckIcon} type="primary" onClick={()=>handleCheck(notification)}/>}
+                                {notification.actions.close &&
+                                    <Notification.Action icon={CloseIcon} type="secondary" onClick={()=>handleClose(notification)}/>}
+                            </Notification.Actions>
+                        : <></>}
+                        
                     </Notification.Root>
                 )
             }

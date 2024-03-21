@@ -9,9 +9,9 @@ export interface NotificationActions{
 
 export interface INotification{
     id: string,
-    type: NotificationTypes,
+    type?: NotificationTypes,
     message: string,
-    icon: IconType,
-    actions: NotificationActions,
+    icon?: IconType,
+    actions?: NotificationActions,
     isNotDismiss?: boolean
 }
