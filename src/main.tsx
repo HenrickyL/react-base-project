@@ -10,8 +10,8 @@ import { useTheme } from './_hooks/theme.tsx'
 const STY = styled.div`
   position: absolute;
   display: flex;
-  top: 0;
-  right:0;
+  bottom: 4px;
+  left: 4px;
   z-index: 5;
 
   button{
